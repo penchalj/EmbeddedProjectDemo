@@ -30,16 +30,17 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying to Staging Server/Artifact Repository...'
-                // Usually involves moving the .elf or .bin file to a server
-                sh 'cp build/app.elf /tmp/last_successful_build.elf'
+                echo 'Deploying to Staging...'
+                // Using ${WORKSPACE} ensures the shell finds the file
+                sh "cp ${WORKSPACE}/build/app.elf /tmp/last_successful_build.elf"
             }
         }
 
         stage('Release') {
             steps {
-                echo 'Creating GitHub Release/Archiving Artifacts...'
-                archiveArtifacts artifacts: 'build/*.elf', fingerprint: true
+                echo 'Archiving Artifacts...'
+                // This makes the file downloadable directly from the Jenkins UI
+                archiveArtifacts artifacts: 'build/app.elf', fingerprint: true
             }
         }
     }

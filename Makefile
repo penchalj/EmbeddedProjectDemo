@@ -1,3 +1,5 @@
+.PHONY: build test
+
 build:
 	mkdir -p build
 	gcc src/main.c src/functions.c -o build/app.elf
