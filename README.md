@@ -1,2 +1,2 @@
 # EmbeddedProjectDemo
-DemoProjectforCICD
+DemoProject for CI/CD
