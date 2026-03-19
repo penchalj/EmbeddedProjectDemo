@@ -1,11 +1,11 @@
+#include <assert.h>
 #include <stdio.h>
-
-int add(int a, int b) {
-    return a + b;
-}
+#include "../src/functions.h"
 
 int main() {
-    printf("Embedded System Starting...\n");
+    assert(add(2, 2) == 4);
+    assert(add(-1, 1) == 0);
+    printf("All tests passed!\n");
     return 0;
 }
 
